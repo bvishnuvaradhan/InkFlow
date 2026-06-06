@@ -28,11 +28,16 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/inkflo
 mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('MongoDB Connected Successfully.');
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
   })
   .catch(err => {
     console.error('Database Connection Error: ', err.message);
-    process.exit(1);
   });
+
+// Listen on port only if running locally (not on Vercel serverless)
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

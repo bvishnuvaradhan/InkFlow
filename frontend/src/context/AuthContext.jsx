@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const res = await fetch('/api/auth/me', {
+        const res = await fetch('/_/backend/api/auth/me', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch('/_/backend/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password, avatar) => {
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await fetch('/_/backend/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

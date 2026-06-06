@@ -36,7 +36,7 @@ export default function CreateEditPost() {
     const fetchPostToEdit = async () => {
       setFetchingPost(true);
       try {
-        const res = await fetch(`/api/posts/${editId}`);
+        const res = await fetch(`/_/backend/api/posts/${editId}`);
         if (res.ok) {
           const data = await res.json();
           const post = data.post;
@@ -86,7 +86,7 @@ export default function CreateEditPost() {
     setLoading(true);
 
     try {
-      const url = editId ? `/api/posts/${editId}` : '/api/posts';
+      const url = editId ? `/_/backend/api/posts/${editId}` : '/_/backend/api/posts';
       const method = editId ? 'PUT' : 'POST';
 
       const res = await fetch(url, {

@@ -23,7 +23,7 @@ export default function BlogPostDetail() {
     const fetchPostDetail = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`/api/posts/${id}`);
+        const res = await fetch(`/_/backend/api/posts/${id}`);
         if (res.ok) {
           const data = await res.json();
           setPost(data.post);
@@ -54,7 +54,7 @@ export default function BlogPostDetail() {
     setLiking(true);
 
     try {
-      const res = await fetch(`/api/posts/${post._id}/like`, {
+      const res = await fetch(`/_/backend/api/posts/${post._id}/like`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -91,7 +91,7 @@ export default function BlogPostDetail() {
     setPostingComment(true);
 
     try {
-      const res = await fetch('/api/comments', {
+      const res = await fetch('/_/backend/api/comments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export default function BlogPostDetail() {
     if (!window.confirm('Are you sure you want to delete this comment?')) return;
 
     try {
-      const res = await fetch(`/api/comments/${commentId}`, {
+      const res = await fetch(`/_/backend/api/comments/${commentId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

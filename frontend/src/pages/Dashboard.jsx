@@ -29,14 +29,14 @@ export default function Dashboard() {
       setLoading(true);
       try {
         // Fetch Stats
-        const statsRes = await fetch('/api/dashboard/stats', {
+        const statsRes = await fetch('/_/backend/api/dashboard/stats', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
         
         // Fetch user posts
-        const postsRes = await fetch('/api/posts?authorOnly=true', {
+        const postsRes = await fetch('/_/backend/api/posts?authorOnly=true', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -64,7 +64,7 @@ export default function Dashboard() {
     if (!window.confirm('Are you sure you want to permanently delete this post? All comments will also be deleted.')) return;
 
     try {
-      const res = await fetch(`/api/posts/${postId}`, {
+      const res = await fetch(`/_/backend/api/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

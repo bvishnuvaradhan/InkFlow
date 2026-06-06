@@ -39,7 +39,7 @@ export default function Home() {
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
-        const res = await fetch('/api/posts?sortBy=likes');
+        const res = await fetch('/_/backend/api/posts?sortBy=likes');
         if (res.ok) {
           const data = await res.json();
           // Set the top liked post as featured
@@ -59,7 +59,7 @@ export default function Home() {
     const fetchFeed = async () => {
       setLoading(true);
       try {
-        let url = `/api/posts?sortBy=${feedTab === 'popular' ? 'likes' : 'createdAt'}`;
+        let url = `/_/backend/api/posts?sortBy=${feedTab === 'popular' ? 'likes' : 'createdAt'}`;
         if (categoryVal && categoryVal !== 'All') {
           url += `&category=${encodeURIComponent(categoryVal)}`;
         }
